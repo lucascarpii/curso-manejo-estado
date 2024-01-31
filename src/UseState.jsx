@@ -14,7 +14,7 @@ const UseState = ({ name }) => {
     if (!!loading) {
       setTimeout(() => {
         console.log("Haciendo la validacion")
-
+        
         if(value == SECURITY_CODE) {
           setError(false)
           setLoading(false)
@@ -36,7 +36,7 @@ const UseState = ({ name }) => {
 
       <p>Por favor, escribe el código de seguridad</p>
 
-      {error && (
+      {(error && !loading) && (
         <p>Error: el código es incorrecto</p>
       )}
       {loading && (
