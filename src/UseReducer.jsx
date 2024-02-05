@@ -48,21 +48,21 @@ function UseReducer({ name }) {
 
   if (!state.deleted && !state.confirmed) {
     return (
-      <div>
+      <div className="card">
         <h2>Eliminar {name}</h2>
         <p> Por favor, escriba el código de seguridad. </p>
 
         {(state.error && !state.loading) && (
-          <p> El código es es incorrecto </p>
+          <p className="error"> El código es es incorrecto </p>
         )}
 
         {state.loading && (
-          <p> Cargando ... </p>
+          <p className="loading"> Cargando ... </p>
         )}
 
         <input
           type='text'
-          placeholder='código de seguridad'
+          placeholder='Código de seguridad'
           value={state.value}
           onChange={onWrite}
         />
@@ -71,18 +71,18 @@ function UseReducer({ name }) {
     );
   } else if (state.confirmed && !state.deleted) {
     return (
-      <>
+      <div className="card">
         <p>¿Seguro que quieres eliminar UseReducer?</p>
-        <button onClick={onDelete}> Si, eliminar </button>
-        <button onClick={onReset}> No, volver </button>
-      </>
+        <button className="delete" onClick={onDelete}> Si, eliminar </button>
+        <button className="reset" onClick={onReset}> No, volver </button>
+      </div>
     )
   } else {
     return (
-      <>
+      <div className="card">
         <p> Eliminado con exito </p>
-        <button onClick={onReset}> Recuperar UseReducer </button>
-      </>
+        <button className="reset" onClick={onReset}> Recuperar UseReducer </button>
+      </div>
     )
   }
 }

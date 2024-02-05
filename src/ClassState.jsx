@@ -43,7 +43,7 @@ class ClassState extends React.Component {
     const { error, loading, value } = this.state
 
     return (
-      <div>
+      <div className="card">
         <h2>Eliminar {this.props.name}</h2>
         <p>Por favor, escribe el código de seguridad</p>
 

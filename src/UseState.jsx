@@ -76,59 +76,43 @@ const UseState = ({ name }) => {
 
   if (!state.deleted && !state.confirmed) {
     return (
-      <div>
+      <div className="card">
         <h2>Eliminar {name}</h2>
         <p>Por favor, escriba el código de seguridad.</p>
 
         {(state.error && !state.loading) && (
-          <p>El código es es incorrecto</p>
+          <p className="error">El código es es incorrecto</p>
         )}
 
         {state.loading && (
-          <p>Cargando ...</p>
+          <p className="loading">Cargando ...</p>
         )}
 
         <input
           type='text'
-          placeholder='código de seguridad'
+          placeholder='Código de seguridad'
           value={state.value}
           onChange={(e) => {
             onWrite(e.target.value)
           }}
         />
-        <button
-          onClick={() => {
-            onCheck()
-          }}
-        >Comprobar</button>
+        <button onClick={onCheck}> Comprobar </button>
       </div>
     );
   } else if (state.confirmed && !state.deleted) {
     return (
-      <React.Fragment>
+      <div className="card">
         <p>¿Seguro que quieres eliminar UseState?</p>
-        <button
-          onClick={() => {
-            onDelete()
-          }}
-        >Si, eliminar</button>
-        <button
-          onClick={() => {
-           onReset()
-          }}
-        >No, volver</button>
-      </React.Fragment>
+        <button className="delete" onClick={onDelete}>Si, eliminar</button>
+        <button className="reset" onClick={onReset}>No, volver</button>
+      </div>
     )
   } else {
     return (
-      <React.Fragment>
+      <div className="card">
         <p>Eliminado con exito</p>
-        <button
-          onClick={() => {
-            onReset()
-          }}
-        >Recuperar UseState</button>
-      </React.Fragment>
+        <button className="reset" onClick={onReset}>Recuperar UseState</button>
+      </div>
     )
   }
 }

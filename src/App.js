@@ -1,6 +1,4 @@
 import { UseState } from './UseState';
-
-import './App.css';
 import { UseReducer } from './UseReducer';
 
 function App() {
